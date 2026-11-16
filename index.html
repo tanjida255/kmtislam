@@ -57,22 +57,86 @@ ul.plain{margin:0;padding-left:20px}ul.plain li{margin-bottom:6px}
 footer{background:var(--navy);color:#9fb6d3;text-align:center;padding:26px 20px;font-size:.93rem}
 @media(max-width:640px){.item{grid-template-columns:1fr;gap:2px}body{font-size:16px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ---- premium layer ---- */
+[data-theme=dark]{color-scheme:dark;--paper:#0b1320;--card:#121c2d;--ink:#e6edf6;--muted:#9aa8bb;--line:#24324a;--teal:#4fd1c5;--tealbg:#12343a}
+[data-theme=dark] h2{color:#cfe3ff;border-color:#2c4a75}
+[data-theme=dark] .tags li,[data-theme=dark] .badge{color:#9ff0e8}
+[data-theme=dark] .filters button[aria-pressed=true]{background:var(--teal);border-color:var(--teal);color:#06201e}
+#q{background:var(--card);color:var(--ink)}
+body{transition:background .3s,color .3s}
+#bar{position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#4fd1c5,#f0b429,#ff6b9d);transform:scaleX(0);transform-origin:0 50%;z-index:60}
+header{position:relative;overflow:hidden;background:linear-gradient(135deg,#0a2240,#0f4c75 55%,#0f7c86);background-size:200% 200%;animation:gr 14s ease infinite;padding-bottom:50px}
+header .wrap{position:relative;z-index:1}
+#net{position:absolute;inset:0;width:100%;height:100%}
+@keyframes gr{50%{background-position:100% 50%}}
+h1{background:linear-gradient(90deg,#fff,#9ff0e8,#fff);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 7s linear infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.type{font:600 1.05rem var(--sans);color:#9ff0e8;margin:0 0 20px;min-height:1.6em}
+.cur{display:inline-block;width:2px;height:1em;background:#9ff0e8;margin-left:3px;vertical-align:-2px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.links a{transition:transform .2s,background .2s}.links a:hover{transform:translateY(-2px)}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.stat{background:rgba(255,255,255,.08);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:10px 18px;min-width:112px}
+.stat b{display:block;font:700 1.8rem/1.2 var(--serif)}.stat span{font-size:.85rem;color:#c5d6ec}
+nav{background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(10px)}
+nav .wrap{align-items:center}
+nav a{transition:color .2s,box-shadow .2s}nav a.on{color:var(--teal);box-shadow:inset 0 -3px var(--teal)}
+#theme{margin-left:auto;flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:1rem}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
+.pub{transition:opacity .6s,transform .25s,box-shadow .25s,border-color .25s}
+.pub.in:hover,.pub:not(.rv):hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(10,34,64,.16)}
+.plike{margin-top:8px;font:600 .85rem var(--sans);border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:3px 12px;cursor:pointer;transition:transform .15s}
+.plike:hover{transform:scale(1.08)}.plike[aria-pressed=true]{color:#e11d48;border-color:#e11d48}
+.dock{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:6px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 8px 6px 16px;box-shadow:0 12px 40px rgba(0,0,0,.22);z-index:30;max-width:calc(100vw - 16px)}
+.dk{font-size:.85rem;color:var(--muted);margin-right:4px;white-space:nowrap}
+.rb{font:600 .9rem var(--sans);border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer;white-space:nowrap;transition:transform .15s,background .2s}
+.rb:hover{transform:translateY(-3px) scale(1.08)}.rb i{font-style:normal;color:var(--muted);margin-left:2px}
+.rb[aria-pressed=true]{background:var(--teal);border-color:var(--teal);color:#fff}.rb[aria-pressed=true] i{color:#fff}
+.fab{position:fixed;right:14px;bottom:78px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;z-index:30;font-size:1.1rem;box-shadow:0 6px 20px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:opacity .3s}
+.fab.show{opacity:1;pointer-events:auto}
+.pt{position:fixed;pointer-events:none;z-index:99;font-size:1.3rem}
+.toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:#0a2240;color:#fff;padding:10px 18px;border-radius:999px;z-index:99;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+footer{padding-bottom:84px}
+@media(max-width:640px){.dk{display:none}.rb{padding:6px 9px}}
+@media(prefers-reduced-motion:reduce){header,h1,.cur{animation:none}.rv{opacity:1;transform:none}}
+
+#skgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));align-items:start}
+#skgrid.one{grid-template-columns:1fr}
+.sk-card{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:12px;padding:16px;margin:0;transition:opacity .6s,transform .25s,box-shadow .25s}
+.sk-card[hidden]{display:none}
+.sk-card.in:hover,.sk-card:not(.rv):hover{transform:translateY(-4px);box-shadow:0 14px 34px color-mix(in srgb,var(--c) 28%,transparent)}
+.sk-card::before{content:"";position:absolute;inset:0;background:radial-gradient(280px circle at var(--mx,50%) var(--my,0),color-mix(in srgb,var(--c) 20%,transparent),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.sk-card:hover::before{opacity:1}
+.sk-h{display:flex;align-items:center;gap:10px;margin-bottom:12px;position:relative}
+.sk-h .ic{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;font-size:1.2rem;background:color-mix(in srgb,var(--c) 18%,transparent)}
+.sk-h h3{flex:1}.sk-h .n{font-style:normal;font-size:.8rem;font-weight:600;color:var(--c);background:color-mix(in srgb,var(--c) 14%,transparent);padding:2px 10px;border-radius:999px}
+.sl{font:600 .78rem var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:12px 0 6px;position:relative}
+.sk-card .tags{position:relative}
+.chip{background:color-mix(in srgb,var(--c) 12%,var(--card))!important;color:var(--ink)!important;border:1px solid color-mix(in srgb,var(--c) 35%,transparent);transition:transform .18s,background .18s,box-shadow .18s;cursor:default}
+.chip:hover{transform:translateY(-2px) scale(1.05);background:var(--c)!important;color:#fff!important;box-shadow:0 6px 14px color-mix(in srgb,var(--c) 40%,transparent)}
+.rv .chip{opacity:0;transform:scale(.8)}
+.rv.in .chip{opacity:1;transform:none;transition:opacity .4s calc(var(--i)*35ms),transform .4s calc(var(--i)*35ms)}
+.rv.in .chip:hover{transform:translateY(-2px) scale(1.05);transition-delay:0s}
 </style>
 </head>
 <body>
-<header><div class="wrap">
+<div id="bar"></div>
+<header><canvas id="net" aria-hidden="true"></canvas><div class="wrap">
 <h1>K. M. Tanjida Islam</h1>
 <p class="role">Lecturer on Probation, Biochemistry and Biotechnology</p>
 <p class="where">Khwaja Yunus Ali University, Sirajganj, Bangladesh</p>
+<p class="type" aria-hidden="true">▸ <span id="tw">In silico drug discovery</span><i class="cur"></i></p>
 <div class="links">
 <a href="mailto:tanjidaislam255@gmail.com">Email</a>
 <a href="https://github.com/tanjida255">GitHub</a>
 <a href="#publications">Publications</a>
 </div>
+<div class="stats"><div class="stat"><b data-n="16">16</b><span>Journal articles</span></div><div class="stat"><b data-n="14">14</b><span>Journals reviewed for</span></div><div class="stat"><b data-n="18">18</b><span>Manuscripts reviewed</span></div><div class="stat"><b data-n="3">3</b><span>Awards</span></div></div>
 </div></header>
 
 <nav aria-label="Sections"><div class="wrap">
-<a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#publications">Publications</a><a href="#skills">Skills</a><a href="#talks">Presentations</a><a href="#awards">Awards</a><a href="#service">Peer review</a><a href="#leadership">Leadership</a>
+<a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#publications">Publications</a><a href="#skills">Skills</a><a href="#talks">Presentations</a><a href="#awards">Awards</a><a href="#service">Peer review</a><a href="#leadership">Leadership</a><button id="theme" type="button" aria-label="Toggle dark mode">☾</button>
 </div></nav>
 
 <main><div class="wrap">
@@ -127,12 +191,16 @@ footer{background:var(--navy);color:#9fb6d3;text-align:center;padding:26px 20px;
 
 <section id="skills">
 <h2>Skills</h2>
-<div class="skill"><b>Laboratory</b><ul class="tags">
-<li>Swiss albino mice and <i>C. elegans</i> handling</li><li>Mouse dissection</li><li>Histopathology</li><li>C. elegans lifespan and fertility assays</li><li>DNA and RNA isolation</li><li>PCR and gel electrophoresis</li><li>Bacterial biochemical characterization</li><li>Antimicrobial resistance testing</li><li>Plant tissue culture</li></ul></div>
-<div class="skill"><b>In silico</b><ul class="tags">
-<li>Machine, deep and reinforcement learning</li><li>Network pharmacology and toxicology</li><li>Virtual screening</li><li>Pharmacophore and 2D/3D QSAR</li><li>Docking: AutoDock Vina, GLIDE, MOE, GOLD</li><li>Gaussian (quantum chemistry)</li><li>Desmond (molecular dynamics)</li><li>Transcriptomics and SNP analysis</li><li>Biomarker prediction</li><li>Hypothetical protein characterization</li></ul></div>
-<div class="skill"><b>Programming and tools</b><ul class="tags">
-<li>Python: numpy, pandas, matplotlib, seaborn, networkx, torch, rdkit, sklearn, tensorflow, keras, pyteomics</li><li>R: ggplot2, DESeq2, limma</li><li>SPSS</li><li>Mendeley</li><li>Microsoft Office</li><li>Canva</li><li>BioRender</li></ul></div>
+<p class="sub" id="skn"></p>
+<div class="filters" id="skf" role="group" aria-label="Filter skills"><button type="button" data-c="all" aria-pressed="true">All</button><button type="button" data-c="lab" aria-pressed="false">🧪 Laboratory</button><button type="button" data-c="ins" aria-pressed="false">🧬 In silico</button><button type="button" data-c="code" aria-pressed="false">💻 Programming</button></div>
+<div id="skgrid">
+<div class="sk-card skill" data-c="lab" style="--c:#10b981"><div class="sk-h"><span class="ic">🧪</span><h3>Laboratory</h3><em class="n"></em></div><ul class="tags"><li class="chip">Swiss albino mice and <i>C. elegans</i> handling</li><li class="chip">Mouse dissection</li><li class="chip">Histopathology</li><li class="chip">C. elegans lifespan and fertility assays</li><li class="chip">DNA and RNA isolation</li><li class="chip">PCR and gel electrophoresis</li><li class="chip">Bacterial biochemical characterization</li><li class="chip">Antimicrobial resistance testing</li><li class="chip">Plant tissue culture</li></ul></div>
+<div class="sk-card skill" data-c="ins" style="--c:#3b82f6"><div class="sk-h"><span class="ic">🧬</span><h3>In silico</h3><em class="n"></em></div><ul class="tags"><li class="chip">Machine, deep and reinforcement learning</li><li class="chip">Network pharmacology and toxicology</li><li class="chip">Virtual screening</li><li class="chip">Pharmacophore and 2D/3D QSAR</li><li class="chip">Docking: AutoDock Vina, GLIDE, MOE, GOLD</li><li class="chip">Gaussian (quantum chemistry)</li><li class="chip">Desmond (molecular dynamics)</li><li class="chip">Transcriptomics and SNP analysis</li><li class="chip">Biomarker prediction</li><li class="chip">Hypothetical protein characterization</li></ul></div>
+<div class="sk-card skill" data-c="code" style="--c:#f59e0b"><div class="sk-h"><span class="ic">💻</span><h3>Programming and tools</h3><em class="n"></em></div>
+<div class="sl">Python</div><ul class="tags"><li class="chip">numpy</li><li class="chip">pandas</li><li class="chip">matplotlib</li><li class="chip">seaborn</li><li class="chip">networkx</li><li class="chip">torch</li><li class="chip">rdkit</li><li class="chip">sklearn</li><li class="chip">tensorflow</li><li class="chip">keras</li><li class="chip">pyteomics</li></ul>
+<div class="sl">R</div><ul class="tags"><li class="chip">ggplot2</li><li class="chip">DESeq2</li><li class="chip">limma</li></ul>
+<div class="sl">Software</div><ul class="tags"><li class="chip">SPSS</li><li class="chip">Mendeley</li><li class="chip">Microsoft Office</li><li class="chip">Canva</li><li class="chip">BioRender</li></ul></div>
+</div>
 </section>
 
 <section id="talks">
@@ -183,6 +251,12 @@ footer{background:var(--navy);color:#9fb6d3;text-align:center;padding:26px 20px;
 
 <footer>© <span id="yr"></span> K. M. Tanjida Islam · <a href="mailto:tanjidaislam255@gmail.com" style="color:#fff">tanjidaislam255@gmail.com</a></footer>
 
+<div class="dock" role="group" aria-label="React to this page"><span class="dk">Like what you see?</span>
+<button class="rb" data-k="like" type="button" aria-label="Like" aria-pressed="false">👍 <i>0</i></button>
+<button class="rb" data-k="wow" type="button" aria-label="WOW" aria-pressed="false">😮 WOW <i>0</i></button>
+<button class="rb" data-k="love" type="button" aria-label="Love" aria-pressed="false">❤️ <i>0</i></button>
+<button class="rb" data-k="fire" type="button" aria-label="Fire" aria-pressed="false">🔥 <i>0</i></button></div>
+<button id="top" class="fab" type="button" aria-label="Back to top">↑</button>
 <script>
 // Each entry: [authors, title, journal, year, firstAuthor, note, doi]
 // Leave doi "" if unknown: the site then shows a PubMed search link instead.
@@ -212,7 +286,7 @@ const filters=[["all","All"],["first","First author"],["2026","2026"],["2025","2
 const fEl=document.getElementById("filters"),list=document.getElementById("pubs"),cnt=document.getElementById("count");
 function draw(){
   const rows=P.filter(p=>(filter==="all"||(filter==="first"?p[4]:String(p[3])===filter))&&(p[0]+p[1]+p[2]+(p[5]||"")+p[6]).toLowerCase().includes(term));
-  list.innerHTML=rows.map(p=>`<li class="pub${p[4]?" first":""}"><h3>${esc(p[1])}${p[5]?`<span class="badge">${esc(p[5])}</span>`:""}</h3><div class="au">${bold(p[0])}</div><div class="jr"><i>${esc(p[2])}</i></div><div class="doi">${p[6]?`DOI: <a href="https://doi.org/${p[6]}" target="_blank" rel="noopener">https://doi.org/${p[6]}</a>`:`<a href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(p[1])}" target="_blank" rel="noopener">Find this paper on PubMed</a>`}</div></li>`).join("");
+  list.innerHTML=rows.map(p=>`<li class="pub${p[4]?" first":""}"><h3>${esc(p[1])}${p[5]?`<span class="badge">${esc(p[5])}</span>`:""}</h3><div class="au">${bold(p[0])}</div><div class="jr"><i>${esc(p[2])}</i></div><div class="doi">${p[6]?`DOI: <a href="https://doi.org/${p[6]}" target="_blank" rel="noopener">https://doi.org/${p[6]}</a>`:`<a href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(p[1])}" target="_blank" rel="noopener">Find this paper on PubMed</a>`}</div><button class="plike" type="button" data-i="${P.indexOf(p)}" aria-pressed="false">♡ Like</button></li>`).join("");
   cnt.textContent=rows.length+" of "+P.length+" publications shown. Green edge marks first-author work.";
   fEl.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.f===filter));
 }
@@ -221,6 +295,58 @@ fEl.addEventListener("click",e=>{const b=e.target.closest("button");if(b){filter
 document.getElementById("q").addEventListener("input",e=>{term=e.target.value.trim().toLowerCase();draw()});
 document.getElementById("yr").textContent=new Date().getFullYear();
 draw();
+(()=>{
+const R=matchMedia("(prefers-reduced-motion:reduce)").matches,$=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const S={g:k=>{try{return localStorage.getItem(k)}catch(e){return null}},s:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+const root=document.documentElement,tb=$("#theme");
+function setT(t){root.dataset.theme=t;S.s("theme",t);tb.textContent=t==="dark"?"☀":"☾"}
+setT(S.g("theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));
+tb.onclick=()=>setT(root.dataset.theme==="dark"?"light":"dark");
+const bar=$("#bar"),tp=$("#top");
+addEventListener("scroll",()=>{const h=root.scrollHeight-innerHeight;bar.style.transform=`scaleX(${h>0?scrollY/h:0})`;tp.classList.toggle("show",scrollY>600)},{passive:true});
+tp.onclick=()=>scrollTo({top:0,behavior:R?"auto":"smooth"});
+// typewriter
+const W=["In silico drug discovery","Network pharmacology","Molecular docking and dynamics","ML-based QSAR","Cancer bioinformatics"],tw=$("#tw");
+if(!R){let i=0,j=0,del=0;(function t(){const w=W[i];j+=del?-1:1;tw.textContent=w.slice(0,j);let d=del?35:70;if(!del&&j===w.length){del=1;d=1400}else if(del&&j===0){del=0;i=(i+1)%W.length;d=300}setTimeout(t,d)})()}
+// counters
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;co.unobserve(e.target);const el=e.target,n=+el.dataset.n;if(R)return;const t0=performance.now();(function f(t){const p=Math.min((t-t0)/1400,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)}));
+$$("[data-n]").forEach(el=>co.observe(el));
+// scroll reveal
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");ro.unobserve(e.target)}}),{threshold:.08});
+function rv(){$$(".item,.pub,.skill,section>p,h2,.filters,#q").forEach(el=>{if(!el.dataset.r){el.dataset.r=1;if(!R){el.classList.add("rv");ro.observe(el)}}})}
+// nav highlight
+const nl=$$("nav a"),so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)nl.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-40% 0px -55% 0px"});
+$$("main section").forEach(s=>so.observe(s));
+// effects
+function burst(el,em,n){if(R)return;const r=el.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;for(let i=0;i<n;i++){const p=document.createElement("span");p.className="pt";p.textContent=em[i%em.length];p.style.left=x+"px";p.style.top=y+"px";document.body.appendChild(p);const a=Math.random()*Math.PI*2,d=60+Math.random()*120;p.animate([{transform:"translate(-50%,-50%) scale(.6)",opacity:1},{transform:`translate(calc(-50% + ${Math.cos(a)*d}px),calc(-50% + ${Math.sin(a)*d-80}px)) scale(${1+Math.random()}) rotate(${Math.random()*360}deg)`,opacity:0}],{duration:900+Math.random()*600,easing:"cubic-bezier(.2,.8,.3,1)"}).onfinish=()=>p.remove()}}
+function toast(m){const t=document.createElement("div");t.className="toast";t.textContent=m;t.setAttribute("role","status");document.body.appendChild(t);t.animate([{opacity:0,transform:"translate(-50%,10px)"},{opacity:1,transform:"translate(-50%,0)",offset:.12},{opacity:1,transform:"translate(-50%,0)",offset:.8},{opacity:0,transform:"translate(-50%,0)"}],{duration:2600}).onfinish=()=>t.remove()}
+// per-paper likes (saved in this browser)
+function post(){$$(".plike").forEach(b=>{const on=S.g("pl"+b.dataset.i)==="1";b.setAttribute("aria-pressed",on);b.textContent=on?"♥ Liked":"♡ Like"});rv()}
+const _d=draw;draw=function(){_d();post()};
+$("#pubs").addEventListener("click",e=>{const b=e.target.closest(".plike");if(!b)return;const on=b.getAttribute("aria-pressed")!=="true";S.s("pl"+b.dataset.i,on?"1":"0");b.setAttribute("aria-pressed",on);b.textContent=on?"♥ Liked":"♡ Like";if(on)burst(b,["❤️","✨"],8)});
+// skills
+$$(".sk-card").forEach(k=>{const c=[...k.querySelectorAll(".chip")];c.forEach((x,i)=>x.style.setProperty("--i",i));k.querySelector(".n").textContent=c.length+" skills";k.addEventListener("pointermove",e=>{const r=k.getBoundingClientRect();k.style.setProperty("--mx",e.clientX-r.left+"px");k.style.setProperty("--my",e.clientY-r.top+"px")})});
+$("#skn").textContent=$$("#skills .chip").length+" skills across the lab bench, in silico pipelines and code.";
+const sf=$("#skf");sf.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const c=b.dataset.c;$$(".sk-card").forEach(k=>{k.hidden=c!=="all"&&k.dataset.c!==c});$("#skgrid").classList.toggle("one",c!=="all");sf.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b))});
+post();
+// page reactions: shared counter via counterapi.dev, falls back to this browser only
+const API="https://api.counterapi.dev/v1/kmtislam-portfolio/",EM={like:["👍"],wow:["😮","🎉","✨","⭐"],love:["❤️","💖"],fire:["🔥","💥"]},cnt={};
+function show(k){const b=$(`.rb[data-k=${k}]`);b.querySelector("i").textContent=cnt[k]||0;b.setAttribute("aria-pressed",S.g("rm_"+k)==="1")}
+$$(".rb").forEach(b=>{const k=b.dataset.k;cnt[k]=+S.g("rc_"+k)||0;show(k);
+fetch(API+k).then(r=>r.json()).then(d=>{if(typeof d.count==="number"){cnt[k]=Math.max(d.count,S.g("rm_"+k)==="1"?1:0);S.s("rc_"+k,cnt[k]);show(k)}}).catch(()=>{});
+b.onclick=()=>{const on=S.g("rm_"+k)!=="1";S.s("rm_"+k,on?"1":"0");cnt[k]=Math.max(0,cnt[k]+(on?1:-1));S.s("rc_"+k,cnt[k]);show(k);fetch(API+k+(on?"/up":"/down")).catch(()=>{});if(on){burst(b,EM[k],k==="wow"?26:12);if(k==="wow")toast("WOW! Thank you for the love 🎉")}}});
+// molecular-network hero background
+const cv=$("#net"),cx=cv.getContext("2d"),hd=$("header"),dpr=Math.min(devicePixelRatio||1,2);let W2,H2,N=[],mx=-999,my=-999,run=true;
+function size(){W2=hd.clientWidth;H2=hd.clientHeight;cv.width=W2*dpr;cv.height=H2*dpr;cx.setTransform(dpr,0,0,dpr,0,0);N=Array.from({length:Math.min(Math.round(W2*H2/14000),70)},()=>({x:Math.random()*W2,y:Math.random()*H2,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4}))}
+function step(){cx.clearRect(0,0,W2,H2);for(const p of N){if(!R){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W2)p.vx*=-1;if(p.y<0||p.y>H2)p.vy*=-1;const dx=p.x-mx,dy=p.y-my,d=Math.hypot(dx,dy);if(d<120&&d>0){p.x+=dx/d*1.2;p.y+=dy/d*1.2}}}
+for(let i=0;i<N.length;i++){const a=N[i];cx.fillStyle="rgba(159,240,232,.8)";cx.beginPath();cx.arc(a.x,a.y,2,0,7);cx.fill();for(let j=i+1;j<N.length;j++){const b=N[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<120){cx.strokeStyle=`rgba(159,240,232,${.35*(1-d/120)})`;cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}}}
+if(run&&!R)requestAnimationFrame(step)}
+hd.addEventListener("pointermove",e=>{const r=hd.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});
+hd.addEventListener("pointerleave",()=>{mx=my=-999});
+new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v&&!run){run=true;step()}run=v}).observe(hd);
+addEventListener("resize",()=>{size();if(R)step()});
+size();step();
+})();
 </script>
 </body>
 </html>
