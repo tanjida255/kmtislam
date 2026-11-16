@@ -118,6 +118,59 @@ footer{padding-bottom:84px}
 .rv .chip{opacity:0;transform:scale(.8)}
 .rv.in .chip{opacity:1;transform:none;transition:opacity .4s calc(var(--i)*35ms),transform .4s calc(var(--i)*35ms)}
 .rv.in .chip:hover{transform:translateY(-2px) scale(1.05);transition-delay:0s}
+
+/* ---- v3: model-organism-first, card sections ---- */
+.wrap{max-width:1000px}
+h2{border:0;padding:0;display:flex;align-items:center;gap:14px;font-size:clamp(1.7rem,4vw,2.3rem)}
+h2::before{content:attr(data-n);font:700 .8rem var(--sans);color:#fff;background:linear-gradient(135deg,var(--teal),#3b82f6);padding:5px 9px;border-radius:8px}
+h2::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--teal),transparent)}
+#education{--c:#3b82f6}#experience{--c:#10b981}#talks{--c:#f59e0b}#awards{--c:#eab308}#leadership{--c:#ec4899}#service{--c:#8b5cf6}
+.item,.pub,.moc{position:relative;overflow:hidden}
+.item{--c:var(--teal);background:var(--card);border:1px solid var(--line)!important;border-left:4px solid var(--c)!important;border-radius:14px;padding:18px 56px 18px 20px;margin-bottom:14px;transition:opacity .6s,transform .25s,box-shadow .25s}
+.item:hover{transform:translateY(-3px);box-shadow:0 14px 34px color-mix(in srgb,var(--c) 25%,transparent)}
+.item::after{content:attr(data-ic);position:absolute;right:16px;top:12px;font-size:1.7rem;transition:transform .3s}
+.item:hover::after{transform:scale(1.3) rotate(-10deg)}
+.item::before,.pub::before,.moc::before{content:"";position:absolute;inset:0;background:radial-gradient(320px circle at var(--mx,50%) var(--my,0),color-mix(in srgb,var(--c,var(--teal)) 16%,transparent),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.item:hover::before,.pub:hover::before,.moc:hover::before{opacity:1}
+.when{font-weight:600;color:var(--c)}
+.pub{border-radius:14px}
+#awards .item{background:linear-gradient(135deg,color-mix(in srgb,#eab308 14%,var(--card)),var(--card))}
+#awards ul.plain{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:8px}
+#awards ul.plain li{margin:0;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);font-size:.93rem}
+#awards ul.plain li::before{content:"✔ ";color:var(--c)}
+#leadership{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+#leadership h2,#leadership>p{grid-column:1/-1}
+#leadership .item{display:block;margin:0}
+.pcs{display:flex;flex-wrap:wrap;gap:8px}.pcl{flex:0 0 100%;font-weight:700;color:var(--c);margin-top:8px}
+.pc{padding:6px 14px;border-radius:999px;border:1px solid color-mix(in srgb,var(--c) 40%,transparent);background:color-mix(in srgb,var(--c) 10%,var(--card));font-size:.92rem;transition:transform .2s,background .2s,color .2s}
+.pc:hover{background:var(--c);color:#fff;transform:translateY(-3px) rotate(-2deg)}
+.orgs{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.orgs span{background:linear-gradient(90deg,#10b98133,#3b82f633);border:1px solid #9ff0e866;padding:6px 16px;border-radius:999px;font-weight:600;animation:fl 3s ease-in-out infinite}
+.orgs span:nth-child(2){animation-delay:.6s}@keyframes fl{50%{transform:translateY(-4px)}}
+.lead{font:400 1.28rem/1.6 var(--serif)}
+.lead b{background:linear-gradient(90deg,#10b981,#3b82f6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin:22px 0}
+.moc{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:18px;padding:20px;transition:opacity .6s,transform .25s,box-shadow .25s}
+.moc:hover{transform:translateY(-4px);box-shadow:0 16px 40px color-mix(in srgb,var(--c) 28%,transparent)}
+.moc h3{font-size:1.3rem}.moc .big{font-size:2.4rem;display:inline-block;margin-right:8px;vertical-align:-4px}
+.moc ul{margin:10px 0 0;padding-left:18px;font-size:.96rem}.moc li{margin-bottom:4px}
+.viz{width:100%;height:90px;display:block;border-radius:12px;margin-top:12px;background:color-mix(in srgb,var(--c) 10%,var(--card));color:var(--c)}
+.ek{stroke-dasharray:1;animation:ec 3s linear infinite}@keyframes ec{from{stroke-dashoffset:1}to{stroke-dashoffset:-1}}
+.pipe{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:20px}
+.ps{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.ps button{font:600 .95rem var(--sans);padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .2s}
+.ps button:hover{transform:translateY(-2px)}.ps button[aria-pressed=true]{background:linear-gradient(90deg,#10b981,#3b82f6);color:#fff;border-color:transparent}
+#pp{min-height:3.4em;margin:0;transition:opacity .25s}
+.pbar{height:4px;border-radius:4px;background:var(--line);margin-top:12px;overflow:hidden}.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#10b981,#3b82f6)}
+.yc{display:flex;align-items:flex-end;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px 10px;margin-bottom:16px;min-height:160px}
+.yb{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;border:0;background:none;cursor:pointer;color:var(--ink);font:600 .9rem var(--sans)}
+.yb i{display:block;width:100%;max-width:90px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--teal),#3b82f6);height:0;transition:height 1.1s cubic-bezier(.2,.8,.3,1)}
+.yb:hover i{filter:brightness(1.25)}
+.cta{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;margin-top:56px;padding:30px;border-radius:22px;color:#fff;background:linear-gradient(135deg,#0a2240,#0f7c86,#3b82f6);background-size:200% 200%;animation:gr 12s ease infinite}
+.cta h3{font-size:1.6rem}.cta p{margin:6px 0 0;color:#d4e2f4}
+.btn{font:600 1rem var(--sans);color:#0a2240;background:#fff;border:0;border-radius:999px;padding:11px 20px;text-decoration:none;cursor:pointer;display:inline-block;margin:4px;transition:transform .2s}
+.btn:hover{transform:translateY(-3px) scale(1.04)}.btn.g{background:transparent;color:#fff;border:1px solid #fff9}
+@media(prefers-reduced-motion:reduce){.orgs span,.ek,.cta{animation:none}.ek{stroke-dasharray:none}}
 </style>
 </head>
 <body>
@@ -132,22 +185,31 @@ footer{padding-bottom:84px}
 <a href="https://github.com/tanjida255">GitHub</a>
 <a href="#publications">Publications</a>
 </div>
-<div class="stats"><div class="stat"><b data-n="16">16</b><span>Journal articles</span></div><div class="stat"><b data-n="14">14</b><span>Journals reviewed for</span></div><div class="stat"><b data-n="18">18</b><span>Manuscripts reviewed</span></div><div class="stat"><b data-n="3">3</b><span>Awards</span></div></div>
+<div class="orgs"><span>🐭 Swiss albino mouse</span><span>🪱 <i>C. elegans</i></span></div>
+<div class="stats"><div class="stat"><b data-n="16">16</b><span>Journal articles</span></div><div class="stat"><b data-n="14">14</b><span>Journals reviewed for</span></div><div class="stat"><b data-n="18">18</b><span>Manuscripts reviewed</span></div><div class="stat"><b data-n="3">3</b><span>Awards</span></div><div class="stat"><b data-n="2">2</b><span>Model organisms</span></div></div>
 </div></header>
 
 <nav aria-label="Sections"><div class="wrap">
-<a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#publications">Publications</a><a href="#skills">Skills</a><a href="#talks">Presentations</a><a href="#awards">Awards</a><a href="#service">Peer review</a><a href="#leadership">Leadership</a><button id="theme" type="button" aria-label="Toggle dark mode">☾</button>
+<a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#publications">Publications</a><a href="#skills">Skills</a><a href="#talks">Presentations</a><a href="#awards">Awards</a><a href="#service">Peer review</a><a href="#leadership">Leadership</a><a href="#contact">Contact</a><button id="theme" type="button" aria-label="Toggle dark mode">☾</button>
 </div></nav>
 
 <main><div class="wrap">
 
 <section id="about">
 <h2>About</h2>
-<p>I am a biotechnologist and lecturer who uses computational methods to find new treatments, mainly for cancer and other complex diseases. My work combines network pharmacology, molecular docking, molecular dynamics, quantum chemistry and machine learning, and I back it up with wet-lab experience in mouse and <i>C. elegans</i> models.</p>
+<p class="lead">I study disease where it actually happens: in living organisms. Working with <b>Swiss albino mice</b> and <b><i>C. elegans</i></b>, I generate in vivo evidence, then use <b>network pharmacology, docking, molecular dynamics and machine learning</b> to explain why it works and decide what to test next.</p>
+<div class="mo">
+<article class="moc" style="--c:#10b981"><h3><span class="big">🐭</span>Swiss albino mouse</h3>
+<ul><li>Diabetic mouse model: stevioside and metformin synergy (MSc thesis)</li><li>Handling, dissection and histopathology</li><li>Findings tied to in silico target and pathway analysis</li></ul>
+<svg class="viz" viewBox="0 0 300 90" preserveAspectRatio="none" aria-hidden="true"><polyline class="ek" pathLength="1" points="0,45 60,45 75,45 85,12 95,78 105,45 150,45 165,45 175,22 185,62 195,45 300,45" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg></article>
+<article class="moc" style="--c:#3b82f6"><h3><span class="big">🪱</span><i>C. elegans</i></h3>
+<ul><li>Lifespan and fertility assays with indigenous yogurt probiotics</li><li>Research Assistant maintaining worm cultures, 2023–2024</li><li>Best Oral Presenter, ICALS 2025</li></ul>
+<canvas class="viz" id="worm" width="600" height="180" aria-label="Interactive C. elegans: move your cursor over it"></canvas></article>
+</div>
+<div class="pipe"><div class="ps" id="ps" role="group" aria-label="Research pipeline"><button type="button" aria-pressed="true">1 · In vivo</button><button type="button" aria-pressed="false">2 · In vitro</button><button type="button" aria-pressed="false">3 · In silico</button></div>
+<p id="pp"></p><div class="pbar"><i id="pb"></i></div></div>
 <p>I have co-authored 16 journal articles, reviewed manuscripts for 14 international journals, and mentor undergraduate students in bioinformatics research.</p>
-<ul class="tags" aria-label="Research interests">
-<li>Drug repurposing</li><li>Network pharmacology</li><li>Molecular docking and dynamics</li><li>ML-based QSAR</li><li>Cancer bioinformatics</li><li>SNP and transcriptomics analysis</li><li>Antimicrobial resistance</li>
-</ul>
+<ul class="tags" aria-label="Research interests"><li>Model organisms: mouse, <i>C. elegans</i></li><li>Drug repurposing</li><li>Network pharmacology</li><li>Molecular docking and dynamics</li><li>ML-based QSAR</li><li>Cancer bioinformatics</li><li>SNP and transcriptomics analysis</li><li>Antimicrobial resistance</li></ul>
 </section>
 
 <section id="education">
@@ -183,6 +245,7 @@ footer{padding-bottom:84px}
 
 <section id="publications">
 <h2>Publications</h2>
+<div class="yc" id="yc" aria-label="Publications per year (click a bar to filter)"></div>
 <div class="filters" id="filters" role="group" aria-label="Filter publications"></div>
 <input id="q" type="search" placeholder="Search by title, journal or keyword" aria-label="Search publications">
 <p id="count" aria-live="polite"></p>
@@ -247,6 +310,7 @@ footer{padding-bottom:84px}
 <p class="sub" style="margin-top:14px">Languages: Bangla (fluent), English (fluent).</p>
 </section>
 
+<section id="contact"><div class="cta"><div><h3>Let’s work together</h3><p>Open to research collaborations and academic opportunities in computational biology and model-organism research.</p></div><div><a class="btn" href="mailto:tanjidaislam255@gmail.com">✉ Email me</a><button class="btn g" id="cp" type="button">Copy email</button><a class="btn g" href="https://github.com/tanjida255">GitHub</a></div></div></section>
 </div></main>
 
 <footer>© <span id="yr"></span> K. M. Tanjida Islam · <a href="mailto:tanjidaislam255@gmail.com" style="color:#fff">tanjidaislam255@gmail.com</a></footer>
@@ -306,14 +370,14 @@ const bar=$("#bar"),tp=$("#top");
 addEventListener("scroll",()=>{const h=root.scrollHeight-innerHeight;bar.style.transform=`scaleX(${h>0?scrollY/h:0})`;tp.classList.toggle("show",scrollY>600)},{passive:true});
 tp.onclick=()=>scrollTo({top:0,behavior:R?"auto":"smooth"});
 // typewriter
-const W=["In silico drug discovery","Network pharmacology","Molecular docking and dynamics","ML-based QSAR","Cancer bioinformatics"],tw=$("#tw");
+const W=["Model organism research: mouse and C. elegans","From in vivo evidence to in silico mechanism","Network pharmacology","Molecular docking and dynamics","ML-based QSAR","Cancer bioinformatics"],tw=$("#tw");
 if(!R){let i=0,j=0,del=0;(function t(){const w=W[i];j+=del?-1:1;tw.textContent=w.slice(0,j);let d=del?35:70;if(!del&&j===w.length){del=1;d=1400}else if(del&&j===0){del=0;i=(i+1)%W.length;d=300}setTimeout(t,d)})()}
 // counters
 const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;co.unobserve(e.target);const el=e.target,n=+el.dataset.n;if(R)return;const t0=performance.now();(function f(t){const p=Math.min((t-t0)/1400,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)}));
 $$("[data-n]").forEach(el=>co.observe(el));
 // scroll reveal
 const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");ro.unobserve(e.target)}}),{threshold:.08});
-function rv(){$$(".item,.pub,.skill,section>p,h2,.filters,#q").forEach(el=>{if(!el.dataset.r){el.dataset.r=1;if(!R){el.classList.add("rv");ro.observe(el)}}})}
+function rv(){$$(".item,.pub,.skill,section>p,h2,.filters,#q,.moc,.pipe,.yc,.cta").forEach(el=>{if(!el.dataset.r){el.dataset.r=1;if(!R){el.classList.add("rv");ro.observe(el)}}})}
 // nav highlight
 const nl=$$("nav a"),so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)nl.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-40% 0px -55% 0px"});
 $$("main section").forEach(s=>so.observe(s));
@@ -345,6 +409,36 @@ hd.addEventListener("pointermove",e=>{const r=hd.getBoundingClientRect();mx=e.cl
 hd.addEventListener("pointerleave",()=>{mx=my=-999});
 new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v&&!run){run=true;step()}run=v}).observe(hd);
 addEventListener("resize",()=>{size();if(R)step()});
+
+// ---- v3 additions ----
+$$("main h2").forEach((h,i)=>h.dataset.n=String(i+1).padStart(2,"0"));
+const IC={education:"🎓",experience:"💼",talks:"🎤",awards:"🏆",leadership:"🌟"};
+$$(".item").forEach(it=>{it.dataset.ic=IC[it.closest("section").id]||""});
+const sv=$("#service ul.plain");
+if(sv)sv.outerHTML='<div class="pcs">'+[...sv.children].map(li=>{const [pb,rest]=li.textContent.split(/: (.+)/);return '<div class="pcl">'+pb+'</div>'+rest.split("; ").map(j=>`<span class="pc">${j}</span>`).join("")}).join("")+'</div>';
+document.addEventListener("pointermove",e=>{const c=e.target.closest&&e.target.closest(".item,.pub,.moc");if(!c)return;const r=c.getBoundingClientRect();c.style.setProperty("--mx",e.clientX-r.left+"px");c.style.setProperty("--my",e.clientY-r.top+"px")},{passive:true});
+$("#cp").onclick=()=>{const m="tanjidaislam255@gmail.com";(navigator.clipboard?navigator.clipboard.writeText(m):Promise.reject()).then(()=>toast("Email copied ✔"),()=>toast(m))};
+// pipeline
+const PT=["In vivo: Swiss albino mice (diabetes, histopathology) and C. elegans (lifespan, fertility) reveal what a treatment does in a whole organism.","In vitro: probiotics isolated from local yogurts are characterized biochemically and tested for antimicrobial resistance.","In silico: network pharmacology, docking, molecular dynamics, quantum chemistry and ML-QSAR explain the mechanism and prioritize what to test next."];
+const pbs=$$("#ps button"),pp=$("#pp"),pb=$("#pb");let pi=0,pt0=performance.now(),manual=false;
+function pset(i){pi=i;pt0=performance.now();pp.style.opacity=0;setTimeout(()=>{pp.textContent=PT[i];pp.style.opacity=1},150);pbs.forEach((b,j)=>b.setAttribute("aria-pressed",j===i))}
+pbs.forEach((b,i)=>b.onclick=()=>{manual=true;pset(i)});pset(0);
+if(!R)setInterval(()=>{if(manual){pb.style.width="0";return}const p=(performance.now()-pt0)/5000;pb.style.width=Math.min(p,1)*100+"%";if(p>=1)pset((pi+1)%3)},100);
+// C. elegans worm
+const wc=$("#worm"),wx=wc.getContext("2d"),Ws=wc.width,Hs=wc.height,sg=Array.from({length:30},()=>({x:Ws/2,y:Hs/2}));let wt=0,tx=null,ty=0,wv=true;
+wc.addEventListener("pointermove",e=>{const r=wc.getBoundingClientRect();tx=(e.clientX-r.left)*Ws/r.width;ty=(e.clientY-r.top)*Hs/r.height});
+wc.addEventListener("pointerleave",()=>tx=null);
+function wf(){wt+=.07;const h=sg[0],gx=tx===null?Ws/2+Math.cos(wt*.5)*Ws*.38:tx,gy=tx===null?Hs/2+Math.sin(wt*.9)*Hs*.3:ty;
+h.x+=(gx-h.x)*.03+Math.sin(wt*5)*1.4;h.y+=(gy-h.y)*.03+Math.cos(wt*5)*1.4;
+for(let i=1;i<sg.length;i++){const a=sg[i-1],b=sg[i],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy)||1;b.x=a.x-dx/d*9;b.y=a.y-dy/d*9}
+wx.clearRect(0,0,Ws,Hs);wx.fillStyle="#3b82f6";for(let i=sg.length-1;i>=0;i--){wx.globalAlpha=1-i/45;wx.beginPath();wx.arc(sg[i].x,sg[i].y,i===0?7:9-i*.18,0,7);wx.fill()}wx.globalAlpha=1;
+if(wv&&!R)requestAnimationFrame(wf)}
+new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v&&!wv){wv=true;wf()}wv=v}).observe(wc);wf();
+// publications per year chart (click to filter)
+const yc=$("#yc"),yrs=[2026,2025,2024],ct=y=>P.filter(p=>p[3]===y).length,mx2=Math.max(...yrs.map(ct));
+yc.innerHTML=yrs.map(y=>`<button class="yb" type="button" data-y="${y}" aria-label="${y}: ${ct(y)} papers"><span>${ct(y)}</span><i data-h="${ct(y)/mx2*110}"></i><span>${y}</span></button>`).join("")+`<p class="sub" style="flex:1.4;margin:0 0 6px 10px">${P.length} papers, ${P.filter(p=>p[4]).length} as first author. Click a bar to filter.</p>`;
+yc.addEventListener("click",e=>{const b=e.target.closest(".yb");if(b){filter=b.dataset.y;draw()}});
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){$$("#yc i").forEach(i=>i.style.height=i.dataset.h+"px");o.disconnect()}}).observe(yc);
 size();step();
 })();
 </script>
